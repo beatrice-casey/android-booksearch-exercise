@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
+import androidx.appcompat.widget.Toolbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
@@ -43,6 +44,13 @@ public class BookListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book_list);
 
+        //finding toolbar view inside activity layout
+        Toolbar toolbar = (Toolbar)  findViewById(R.id.toolbar);
+        //set the toolbar to act as the activity bar in this window
+        //make sure the toolbar exists in the activity and is not null.
+
+        setSupportActionBar(toolbar);
+
         rvBooks = findViewById(R.id.rvBooks);
         abooks = new ArrayList<>();
         context = this;
@@ -52,7 +60,7 @@ public class BookListActivity extends AppCompatActivity {
         bookAdapter.setOnItemClickListener(new BookAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View itemView, int position) {
-                
+
                 // Handle item click here:
 
                 // Create Intent to start BookDetailActivity
@@ -159,4 +167,5 @@ public class BookListActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
 }
